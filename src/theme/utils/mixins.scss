@@ -240,7 +240,7 @@
       border-top: 0.5rem solid transparent;
       border-bottom: 0.5rem solid transparent;
       border-right: 0 solid transparent;
-      border-bottom-color: $borderColor;
+      border-left-color: $borderColor;
     }
   }
 
@@ -263,7 +263,7 @@
       border-top: 0.5rem solid transparent;
       border-bottom: 0.5rem solid transparent;
       border-left: 0 solid transparent;
-      border-bottom-color: $borderColor;
+      border-right-color: $borderColor;
     }
   }
 }
