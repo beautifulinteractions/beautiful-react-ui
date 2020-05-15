@@ -3,7 +3,7 @@ import { useWindowResize } from 'beautiful-react-hooks';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Portal from '../_Portal/Portal';
-import { Placement } from '../../../shared';
+import { Placement, warn } from '../../../shared';
 import getFloaterAbsolutePosition from './utils/getFloaterAbsolutePosition';
 import checkAvailableSpace from './utils/checkAvailableSpace';
 import getOppositePlacement from './utils/getOppositePlacement';
@@ -30,7 +30,8 @@ const FloatingContent = (props) => {
    * It will contain a placement value opposite to the given one.
    */
   const [derivedPlacement, setDerivedPlacement] = useState(placement);
-
+  // use to check how many times the position has been recalculated
+  const [recalculatePositionTimes, setRecalculatePositionTimes] = useState();
   const classList = classNames('bi bi-floater', { [`float-${derivedPlacement}`]: !!derivedPlacement }, className);
 
   // Derives the component's position from the trigger's wrapper element then set it as elementStyle state.
@@ -46,14 +47,20 @@ const FloatingContent = (props) => {
     if (isShown && elementStyle) {
       let nextPlacement = placement;
       const isThereEnoughSpace = checkAvailableSpace(contentWrapperRef.current);
+      if (recalculatePositionTimes >= 2) {
+        setElementStyle(undefined);
+        setDerivedPlacement(placement);
+        warn('It is impossible to show the FloatingContent because there\'s no enough space to show it.');
+        return;
+      }
 
       // if it is required to find the better position when there's no space to show the floating content
-      if (reversePlacementOnSmallSpace && !isThereEnoughSpace) {
+      if (reversePlacementOnSmallSpace && !isThereEnoughSpace && recalculatePositionTimes < 2) {
         nextPlacement = getOppositePlacement(placement);
         const nextStyle = getFloaterAbsolutePosition(triggerWrapperRef.current, nextPlacement, offset, widthAsTrigger);
         setElementStyle(nextStyle);
+        setRecalculatePositionTimes(recalculatePositionTimes + 1);
       }
-
       setDerivedPlacement(nextPlacement);
     }
   }, [elementStyle]);
@@ -63,6 +70,7 @@ const FloatingContent = (props) => {
     if (!isShown) {
       setElementStyle(undefined);
       setDerivedPlacement(placement);
+      setRecalculatePositionTimes(0);
     }
   }, [isShown]);
 
