@@ -45,7 +45,7 @@ const FloatingContent = (props) => {
   // check if the rendered element has enough space in the viewport
   useEffect(() => {
     if (isShown && elementStyle) {
-      let nextPlacement = placement;
+      let nextPlacement = derivedPlacement;
       const isThereEnoughSpace = checkAvailableSpace(contentWrapperRef.current);
       if (recalculatePositionTimes >= 2) {
         setElementStyle(undefined);
@@ -61,6 +61,7 @@ const FloatingContent = (props) => {
         setElementStyle(nextStyle);
         setRecalculatePositionTimes(recalculatePositionTimes + 1);
       }
+
       setDerivedPlacement(nextPlacement);
     }
   }, [elementStyle]);

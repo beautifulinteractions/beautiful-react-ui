@@ -157,14 +157,14 @@
       top: -0.4rem;
       left: 50%;
       transform: translate(-50%, 0);
-      border-bottom: 0.5rem solid $borderColor;
+      border-bottom: 0.5rem solid $arrowFill;
       border-right: 0.5rem solid transparent;
       border-left: 0.5rem solid transparent;
       border-top: 0 solid transparent;
     }
 
     &::after {
-      top: -0.5rem;
+      top: -0.4rem;
       left: 50%;
       transform: translate(-50%, 0);
       border-bottom: 0.5rem solid;
@@ -180,14 +180,14 @@
       top: -0.4rem;
       left: 10%;
       transform: translate(-50%, 0);
-      border-bottom: 0.5rem solid $borderColor;
+      border-bottom: 0.5rem solid $arrowFill;
       border-right: 0.5rem solid transparent;
       border-left: 0.5rem solid transparent;
       border-top: 0 solid transparent;
     }
 
     &::after {
-      top: -0.5rem;
+      top: -0.4rem;
       left: 10%;
       transform: translate(-50%, 0);
       border-bottom: 0.5rem solid;
@@ -203,14 +203,14 @@
       top: -0.4rem;
       left: 90%;
       transform: translate(-50%, 0);
-      border-bottom: 0.5rem solid $borderColor;
+      border-bottom: 0.5rem solid $arrowFill;
       border-right: 0.5rem solid transparent;
       border-left: 0.5rem solid transparent;
       border-top: 0 solid transparent;
     }
 
     &::after {
-      top: -0.5rem;
+      top: -0.4rem;
       left: 90%;
       transform: translate(-50%, 0);
       border-bottom: 0.5rem solid;
@@ -226,7 +226,7 @@
       left: 99%;
       top: 50%;
       transform: translate(0, -50%);
-      border-left: 0.5rem solid $borderColor;
+      border-left: 0.5rem solid $arrowFill;
       border-top: 0.5rem solid transparent;
       border-bottom: 0.5rem solid transparent;
       border-right: 0 solid transparent;
@@ -249,7 +249,7 @@
       right: 99%;
       top: 50%;
       transform: translate(0, -50%);
-      border-right: 0.5rem solid $borderColor;
+      border-right: 0.5rem solid $arrowFill;
       border-top: 0.5rem solid transparent;
       border-bottom: 0.5rem solid transparent;
       border-left: 0 solid transparent;
