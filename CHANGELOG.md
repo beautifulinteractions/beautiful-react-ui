@@ -1088,3 +1088,13 @@ disable `Hot` and enable `live reloading` (it refresh when something changes)
 
 - Render loop in FloatingContent caused by a recursive position calculation
 - drop-down/select component's pointer weird CSS glitch
+
+## [0.57.0] - 2020-12-03
+
+### Added
+
+- Option to keep multiple accordion panels open at the same time
+
+### Fixed
+
+- Moved `react` and `react-dom` from `dependencies` to `peerDependencies`
